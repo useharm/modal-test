@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../src/css/styles.css">
+</head>
+
+<body>
+    <button class="btn custom" id="openModal">открыть</button>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="form-part" id="part1">
+                <div class="form-header">
+                    <div class="form-page"><span>Возраст</span>
+                        <span><span>1</span>/3</span>
+                    </div>
+                    <div class="range-slider">
+                        <output for="customRange" class="output">27 лет</output>
+                        <input type="range" min="18" max="35" value="27" class="slider" id="ageRange">
+                        <div class="range-value">
+                            <span>18 лет</span>
+                            <span>35 лет</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-main">
+                    <div class="form-gender">
+                        <div class="form-header"><span>Пол</span></div>
+                        <div class="gender-options">
+                            <input type="radio" name="gender" value="male" class="gender-radio" id="radio-1">
+                            <label for="radio-1">мужчина</label>
+
+                            <input type="radio" name="gender" value="female" class="gender-radio" id="radio-2">
+                            <label for="radio-2">женщина</label>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-footer"><button class="btn next" style="margin-top: 45px">Далее</button></div>
+            </div>
+            <div class="form-part" id="part2">
+                <div class="form-header">
+                    <div class="form-page"><span>Город</span>
+                        <span><span>2</span>/3</span>
+                    </div>
+                    <div class="custom-dropdown">
+                        <div class="dropdown-header">
+                            <span data-value="Минск">Минск</span>
+                            <div class="arrow"></div>
+                        </div>
+                        <ul class="dropdown-list">
+                            <li data-value="Гродно">Гродно</li>
+                            <li data-value="Витебск">Витебск</li>
+                            <li data-value="Могилев">Могилев</li>
+                            <li data-value="Гомель">Гомель</li>
+                            <li data-value="Брест">Брест</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-main">
+                    <div class="form-message">
+                        <div class="form-header"><span>Сообщение</span></div>
+                        <div class="message-field"><input type="text" placeholder="Количество символов не более 370"
+                                class="custom-text" maxlength="370">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-footer">
+                    <button class="btn prev">Назад</button>
+                    <button class="btn next">Далее</button>
+                </div>
+            </div>
+            <div class="form-part" id="part3">
+                <div class="form-header">
+                    <div class="form-page"><span>Имя</span>
+                        <span><span>3</span>/3</span>
+                    </div>
+                    <input type="text" class="name-input">
+                </div>
+                <div class="form-main">
+                    <div class="form-header"><span>Телефон</span>
+                        <input type="text" id="phone-input" placeholder="Введите номер телефона" class="name-input">
+                        <div class="checkbox-container">
+                            <label for="privacy-checkbox" class="checkbox-label">
+                                <input type="checkbox" id="privacy-checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                Я согласен с политикой конфиденциальности
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-footer">
+                    <button class="btn prev">Назад</button>
+                    <button class="btn submit custom">Отправить</button>
+                </div>
+            </div>
+            <div class="form-part" id="part4">
+                <div class="form-header">
+                    <div class="success-icon"></div>
+                </div>
+                <div class="form-main">
+                    <div class="success-text"><span>Ваша заявка успешно отправлена!</span></div>
+                </div>
+                <div class="form-footer">
+                    <button class="btn close custom">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../src/js/script.js"></script>
+</body>
+
+</html>
