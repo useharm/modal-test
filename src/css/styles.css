@@ -52,14 +52,25 @@ li {
     margin-bottom: 100px;
 }
 
-.custom,
 .next {
     border: none;
     background: linear-gradient(90deg, #4333FF 0%, #07FFD2 100%);
     color: #FFF;
 }
 
-.next:hover {
+.custom:disabled {
+    border: none;
+    background: linear-gradient(90deg, #B2ABFF 0%, #51FFE0 92.98%);
+    color: #FFF;
+}
+
+.custom {
+    border: none;
+    background: linear-gradient(90deg, #4333FF 0%, #07FFD2 100%);
+    color: #FFF;
+}
+
+.submit .next:hover {
     background: linear-gradient(90deg, #7E73FF 0%, #07FFD2 92.98%);
 }
 
@@ -312,6 +323,8 @@ button {
     font-weight: 400;
     line-height: normal;
     position: relative;
+    overflow: hidden;
+    resize: none;
 }
 
 
@@ -351,7 +364,7 @@ button {
 }
 
 #phone-input {
-    margin: 30px 0 40px 0;
+    margin: 0 0 40px 0;
 }
 
 .checkbox-container {
@@ -413,6 +426,21 @@ button {
     font-weight: 500;
     width: 100%;
     text-align: center;
+}
+
+.warning-message1,
+.warning-message2 {
+    display: block;
+    color: #FF6565;
+    font-family: Inter;
+    font-size: 18px !important;
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 6px;
+}
+
+.warning-message2 {
+    margin-top: 25px;
 }
 
 @media (max-width: 1200px) {
@@ -539,7 +567,7 @@ button {
         }
 
         #phone-input {
-            margin: 20px 0 20px 0;
+            margin: 0 0 20px 0;
         }
 
         .success-icon {

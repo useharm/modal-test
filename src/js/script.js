@@ -1,3 +1,5 @@
+// модалка, переключение страниц формы
+
 const modal = document.getElementById('myModal');
 const formParts = document.querySelectorAll('.form-part');
 
@@ -27,14 +29,50 @@ document.querySelectorAll('.next').forEach(button => {
     });
 });
 
+
+// кнопка submit,  очистка формы
+
+
 document.querySelector('.submit').addEventListener('click', function () {
+    document.getElementById('ageRange').value = 27;
+    document.querySelector('.output').textContent = `${ageRange.value} лет`;
+    document.getElementById('radio-1').checked = true;
+    document.getElementById('name-input').value = '';
+    document.getElementById('phone-input').value = '';
+    document.getElementById('privacy-checkbox').checked = false;
+    document.querySelector('.custom-text').value = '';
+
     formParts.forEach(part => part.classList.remove('active'));
     document.querySelector('.form-part#part4').classList.add('active');
+    checkInputs();
+
 })
 document.querySelector('.close').addEventListener('click', function () {
     modal.style.display = 'none';
     formParts.forEach(part => part.classList.remove('active'));
 })
+document.querySelectorAll('.prev').forEach(button => {
+    button.addEventListener('click', function () {
+        const currentIndex = Array.from(formParts).indexOf(document.querySelector('.form-part.active'));
+        showFormPart(currentIndex - 1);
+    });
+});
+
+
+// Ограничение символов у textarea
+
+document.querySelector('.custom-text').addEventListener('input', function () {
+    const textarea = this;
+    const maxLength = 370;
+
+    if (textarea.value.length > maxLength) {
+        textarea.value = textarea.value.slice(0, maxLength);
+    }
+});
+
+
+// input range
+
 
 document.addEventListener('DOMContentLoaded', function () {
     const ageRange = document.getElementById('ageRange');
@@ -46,13 +84,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-document.querySelectorAll('.prev').forEach(button => {
-    button.addEventListener('click', function () {
-        const currentIndex = Array.from(formParts).indexOf(document.querySelector('.form-part.active'));
-        showFormPart(currentIndex - 1);
-    });
-});
 
+// выпадающий список
 
 const dropdownHeader = document.querySelector('.dropdown-header');
 const dropdownList = document.querySelector('.dropdown-list');
@@ -77,7 +110,40 @@ dropdownItems.forEach(item => {
 });
 
 
+// кнопка отправки disabled
 
+
+function checkInputs() {
+    const nameInput = document.getElementById('name-input').value;
+    const phoneInput = document.getElementById('phone-input').value;
+    const submitBtn = document.getElementById('submit');
+    const privacyBtn = document.getElementById('privacy-checkbox');
+    const warning1 = document.querySelector('.warning-message1');
+    const warning2 = document.querySelector('.warning-message2');
+
+    if (nameInput.trim() !== '' && phoneInput.trim() !== '' && phoneInput.length >= 11 && privacyBtn.checked) {
+        submitBtn.disabled = false;
+    } else {
+        submitBtn.disabled = true;
+    }
+    if (nameInput.trim() == '') {
+        warning1.style.opacity = 1;
+    } else {
+        warning1.style.opacity = 0;
+    }
+    if (phoneInput.trim() == '') {
+        warning2.style.opacity = 1;
+    } else {
+        warning2.style.opacity = 0;
+    }
+}
+
+document.querySelector('.modal-content').addEventListener('input', checkInputs)
+
+
+
+
+// проверка ip пользователя + маска для номера
 
 document.addEventListener("DOMContentLoaded", async function () {
     async function getCountryFromIP() {
@@ -109,8 +175,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 value += ''
             }
 
-            if (value.length > mask.length + 10) {
-                value = value.slice(0, mask.length + 10);
+            if (value.length > mask.length + 11) {
+                value = value.slice(0, mask.length + 11);
             }
             event.target.value = value;
         });

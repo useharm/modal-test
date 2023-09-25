@@ -30,7 +30,7 @@
                     <div class="form-gender">
                         <div class="form-header"><span>Пол</span></div>
                         <div class="gender-options">
-                            <input type="radio" name="gender" value="male" class="gender-radio" id="radio-1">
+                            <input type="radio" name="gender" value="male" class="gender-radio" id="radio-1" checked>
                             <label for="radio-1">мужчина</label>
 
                             <input type="radio" name="gender" value="female" class="gender-radio" id="radio-2">
@@ -63,8 +63,9 @@
                 <div class="form-main">
                     <div class="form-message">
                         <div class="form-header"><span>Сообщение</span></div>
-                        <div class="message-field"><input type="text" placeholder="Количество символов не более 370"
-                                class="custom-text" maxlength="370">
+                        <div class="message-field">
+                            <textarea type="text" placeholder="Количество символов не более 370"
+                                class="custom-text"></textarea>
                         </div>
                     </div>
                 </div>
@@ -78,10 +79,12 @@
                     <div class="form-page"><span>Имя</span>
                         <span><span>3</span>/3</span>
                     </div>
-                    <input type="text" class="name-input">
+                    <span class="warning-message1">Введите имя</span>
+                    <input type="text" class="name-input" id="name-input">
                 </div>
                 <div class="form-main">
                     <div class="form-header"><span>Телефон</span>
+                        <span class="warning-message2">Введите номер телефона</span>
                         <input type="text" id="phone-input" placeholder="Введите номер телефона" class="name-input">
                         <div class="checkbox-container">
                             <label for="privacy-checkbox" class="checkbox-label">
@@ -95,7 +98,7 @@
                 </div>
                 <div class="form-footer">
                     <button class="btn prev">Назад</button>
-                    <button class="btn submit custom">Отправить</button>
+                    <button class="btn submit custom" id="submit" disabled>Отправить</button>
                 </div>
             </div>
             <div class="form-part" id="part4">
