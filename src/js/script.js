@@ -34,17 +34,25 @@ document.querySelectorAll('.next').forEach(button => {
 
 
 document.querySelector('.submit').addEventListener('click', function () {
-    document.getElementById('ageRange').value = 27;
-    document.querySelector('.output').textContent = `${ageRange.value} лет`;
-    document.getElementById('radio-1').checked = true;
-    document.getElementById('name-input').value = '';
-    document.getElementById('phone-input').value = '';
-    document.getElementById('privacy-checkbox').checked = false;
-    document.querySelector('.custom-text').value = '';
+    const loader = document.querySelector('.loader');
 
-    formParts.forEach(part => part.classList.remove('active'));
-    document.querySelector('.form-part#part4').classList.add('active');
-    checkInputs();
+    loader.style.display = 'inline-block';
+    document.getElementById('submit').disabled = true;
+
+
+    setTimeout(() => {
+        formParts.forEach(part => part.classList.remove('active'));
+        document.querySelector('.form-part#part4').classList.add('active');
+        document.getElementById('ageRange').value = 27;
+        document.querySelector('.output').textContent = `${ageRange.value} лет`;
+        document.getElementById('radio-1').checked = true;
+        document.getElementById('name-input').value = '';
+        document.getElementById('phone-input').value = '';
+        document.getElementById('privacy-checkbox').checked = false;
+        document.querySelector('.custom-text').value = '';
+        loader.style.display = 'none';
+        checkInputs();
+    }, 3000)
 
 })
 document.querySelector('.close').addEventListener('click', function () {
@@ -82,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
         output.textContent = `${ageRange.value} лет`;
     });
 });
+
 
 
 
